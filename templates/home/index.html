@@ -1,0 +1,195 @@
+
+{% extends "bff/base.html" %}
+{% load i18n staticfiles mezzanine_tags blog_tags %}
+
+{% block content %}
+
+<div id="mydiv"></div>
+
+
+<script type="text/babel">
+    {% include "bff/reactJs/reactCards.js" %}
+
+function Wrapp(){
+    return (
+    <div>
+        <ul id="myUL">
+<div id="id01" className="container row flex-spaces">
+{% for p in dd %}
+
+        <AppCard
+        mr="{{ p.mr }}"
+        fr="{{ p.en }}"
+        en="{{ p.fr }}"
+        sp="{{ p.sp }}"
+        {% if p.hasAudio %}
+        sound = "{{ p.son }}"
+        {% else %}
+        sound ="no"
+        {% endif %}
+        />
+{% endfor %}
+</div>
+</ul>
+
+
+    </div>
+    );
+}
+    ReactDOM.render(<Wrapp />, document.getElementById('mydiv'))
+
+</script>
+
+<audio id="myAudio">
+  <source src="{% static "sounds/gm.ogg" %}" type="audio/ogg">
+  <source src="{% static "sounds/gm.mp3" %}" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+
+<p><span class="text-secondary">Moore, moshi, mossi</span> language is “spoken by approximately 5 million people in <span class="text-success">Burki</span><span class="text-warning">na</span> <span class="text-danger">Faso</span>, plus another 60,000+ in Mali and Togo. “.</p>
+
+<p>In perspective <span class="text-danger">Mandarin Chinese</span> 917.8 million, <span class="text-success">Spanish</span> 460.1 million, <span class="text-secondary">English</span> 379.0 million, <span class="text-muted">French</span> 77.2 million.</p>
+
+<p>This is nothing to be shy about, <span class="text-success">Burki</span><span class="text-warning">na</span> <span class="text-danger">Faso</span> has 20 million inhabitants and a quarter speak mossi.</p>
+
+<input type="text" name="search" id="myInput" onkeyup="myFunction()" placeholder="Search here" title="Search here">
+
+
+
+<hr>
+
+<div class="row">
+
+<div class="sm-6 md-6 lg-6 col" >
+<img id="im" src="{% static "img/bf/bf.png" %}" alt="Car" style="width:100%">
+</div>
+
+<div class="sm-6 md-3 lg-3 col border border-secondary">
+<p>Hover me</p>
+<ul>
+<li onmouseover="change('mossi.png')" class="background-primary">Mossi</li>
+<li onmouseover="change('burkina.png')" class="background-secondary">Burkina Faso regions map</li>
+<li onmouseover="change('mossivillagekokologo2.jpg')" class="background-success">Mossi buildings</li>
+<li onmouseover="change('mossi_kingdom.jpg')" class="background-danger">Mossi warrior</li>
+<li>...</li>
+</ul>
+</div>
+
+<div class="sm-6 md-3 lg-3 col border border-6 border-primary">
+<span id="info1" class="text-success" ></span><br>
+<span id="info2" class="text-success"></span><br>
+<span id="info3" class="text-success"></span>
+
+</div>
+
+</div>
+<hr>
+<h1>BookMark</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>cate</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for p in book %}
+
+    <tr>
+      <td><a href="{{ p.link }}" target="_blank">{{ p }}</a></td>
+      <td>{{ p.cate }}</td>
+      <td>{{ p.rate }}/5</td>
+    </tr>
+{% endfor %}
+
+  </tbody>
+</table>
+
+<hr>
+
+
+<section style="margin-top:20px">
+<div class="container">
+
+<h5>Add aNew BookMark</h5>
+<form action="" method="POST">
+	 {% csrf_token %}
+<div class="row">
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+	     Name :<span>{{ form.title }}</span>
+	 </div>
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+    	 Link :<span>{{ form.link }}</span>
+    </div>
+</div>
+<div class="row">
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+	     Type :<span>{{ form.cate }}</span>
+	 </div>
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+    	 Rate :<span>{{ form.rate }}</span>
+    </div>
+</div>
+<div class="text-center">
+    <input type="submit" >
+</div>
+</form>
+
+</section>
+
+
+</div>
+
+<script>
+
+function myFunction() {
+    var input, filter, ul, li, b, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("i");
+    for (i = 0; i < li.length; i++) {
+        b = li[i].getElementsByTagName("b")[0];
+        if (b.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+//
+
+function change(n){
+
+var str ="{% static "img/bf/" %}"+n;
+
+var strInfo =[
+{pop:"10k+",capital:"Dogon",language:"Fr"},
+{pop:"2m+",capital:"Ouagadougou",language:"Fr"},
+{pop:"1k",capital:"Bobo",language:"Fr"},
+];
+
+//var setClass = "border-"+Math.floor((Math.random() * 4) + 2);
+
+
+
+document.getElementById("im").src=str;
+document.getElementById("info1").innerHTML=n;
+document.getElementById("info2").innerHTML=n;
+document.getElementById("info3").innerHTML=n;
+
+
+//document.getElementById("info").className = "border "+setClass+" border-primary"
+}
+
+
+</script>
+
+{% endblock %}
+
+
