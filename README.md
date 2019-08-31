@@ -1,8 +1,11 @@
-# bff
-More language translator
+# More language translator
+
 This Django app uses react and Css paper.
 
 The react part was integrated using react CDN.
+
+https://github.com/QbasicFan/bff/blob/master/extra/travel.png
+
 
 https://www.philserme.com/post/13/
 
