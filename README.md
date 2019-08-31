@@ -1,4 +1,4 @@
-![Screenshot](/extra/travel.png?raw=true "Title")
+![Screenshot](/extra/travel.png?raw=true "Phil Serme, More translate App")
 
 # More language translator
 
