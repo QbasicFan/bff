@@ -20,7 +20,7 @@ Read more about the app at [Phil Serme.com](https://www.philserme.com/post/13/)
 
 ## Install the app
 
-1. git clone 
+1. git clone https://github.com/QbasicFan/bff
 2. add bff(default name) to settings
 3. add path to bff in url
 4. python manage.py makemigrations bff
