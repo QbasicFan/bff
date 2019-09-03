@@ -1,6 +1,7 @@
 ![Screenshot](/extra/travel.png?raw=true "Phil Serme, More translate App")
 
 # More language translator
+[Moore, Mossi, Moshi etc...](https://en.wikipedia.org/wiki/Mossi_language)
 
 This **Django app** uses **react** and **Css paper**.
 
