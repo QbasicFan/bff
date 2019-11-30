@@ -1,0 +1,29 @@
+
+{% extends "home/base.html" %}
+{% load i18n staticfiles mezzanine_tags blog_tags %}
+
+{% block content %}
+
+<div class="center">Welcome, {{ user.username }}</div>
+
+
+<p>How are you today ?</p>
+
+<p> Add a new definition <a href="/bff/addWord/">Add word</a></p>
+
+<p>List User created definitions </p>
+<p>{{ todo }}</p>
+
+<ul>
+
+    {% for p in defini %}
+
+    <li>{{ p.mr }}</li>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock %}
+
+
