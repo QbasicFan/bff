@@ -1,4 +1,4 @@
-{% extends "bff/base.html" %}
+{% extends "home/base.html" %}
 {% load i18n staticfiles mezzanine_tags blog_tags %}
 
 {% block content %}
@@ -6,7 +6,7 @@
 
 <div class="" style="margin-top:120px">
  <h1 class="">Error your username or password has noy been authentificated correctly , please try again </h1>
-
+<p>{{ form.errors }}</p>
 {% if form.errors %}
 {% for errors in form.errors %}
 {{ errors }}
@@ -14,5 +14,5 @@
 {% endif %}
 <a href="/bff/">home</a>
 
-
+</div>
 {% endblock %}
