@@ -1,0 +1,123 @@
+
+{% extends "home/base.html" %}
+{% load i18n staticfiles mezzanine_tags blog_tags %}
+
+{% block content %}
+
+
+
+
+<div class="center">
+
+<h1>Favorite Words</h1>
+
+</div>
+
+
+
+<div id="mydiv"></div>
+
+
+<script type="text/babel">
+    {% include "home/reactJs/reactCards.js" %}
+
+function Wrapp(){
+    return (
+    <div>
+        <ul id="myUL">
+<div id="id01" className="container row flex-spaces">
+{% for p in dd %}
+
+        <AppCard
+        mr="{{ p.mr }}"
+        fr="{{ p.en }}"
+        en="{{ p.fr }}"
+        sp="{{ p.sp }}"
+        {% if p.hasAudio %}
+        sound = "{{ p.son }}"
+        {% else %}
+        sound ="no"
+        {% endif %}
+        />
+{% endfor %}
+</div>
+</ul>
+
+
+    </div>
+    );
+}
+    ReactDOM.render(<Wrapp />, document.getElementById('mydiv'))
+
+</script>
+
+<audio id="myAudio">
+  <source src="{% static "sounds/gm.ogg" %}" type="audio/ogg">
+  <source src="{% static "sounds/gm.mp3" %}" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<script>
+
+function init (){
+
+}
+
+function myFunction() {
+    var input, filter, ul, li, b, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("i");
+    for (i = 0; i < li.length; i++) {
+        b = li[i].getElementsByTagName("b")[0];
+        if (b.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+//
+
+function change(n){
+
+var str ="{% static "img/bf/" %}"+n;
+
+var strInfo =[
+{pop:"10k+",capital:"Dogon",language:"Fr"},
+{pop:"2m+",capital:"Ouagadougou",language:"Fr"},
+{pop:"1k",capital:"Bobo",language:"Fr"},
+];
+
+//var setClass = "border-"+Math.floor((Math.random() * 4) + 2);
+
+
+
+document.getElementById("im").src=str;
+document.getElementById("info1").innerHTML=n;
+document.getElementById("info2").innerHTML=n;
+document.getElementById("info3").innerHTML=n;
+
+
+//document.getElementById("info").className = "border "+setClass+" border-primary"
+}
+
+
+</script>
+
+{% endblock %}
+
+
