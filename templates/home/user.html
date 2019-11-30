@@ -1,0 +1,108 @@
+
+{% extends "home/base.html" %}
+{% load i18n staticfiles mezzanine_tags blog_tags %}
+
+{% block content %}
+
+<div class="center">
+    <h1>User list</h1>
+</div>
+
+
+
+<ul>
+
+    {% for p in users %}
+
+        <li>
+        <div class="row border border-4">
+
+        <div class="col-4 col">
+<p>{{ p }}</p>
+        <img src="http://i58.photobucket.com/albums/g262/_black_mage_/Eevee.jpg" style ="width:150px">
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+        {% lorem 10 w random %}
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+
+        <button class="btn btn-primary">Follow</button>
+        <button class="btn btn-alert">Like</button>
+        </div>
+
+        </div>
+
+    </li>
+
+    {% endfor %}
+
+    <li>
+        <div class="row border border-4">
+
+        <div class="col-4 col">
+<p>Jhon Doe</p>
+        <img src="http://i58.photobucket.com/albums/g262/_black_mage_/Eevee.jpg" style ="width:150px">
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+        {% lorem 10 w random %}
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+
+        <button class="btn btn-primary">Follow</button>
+        <button class="btn btn-alert">Like</button>
+        </div>
+
+        </div>
+
+    </li>
+
+
+    <li>
+        <div class="row border border-4">
+
+        <div class="col-4 col">
+<p>Feneke Doe</p>
+        <img src="https://vignette2.wikia.nocookie.net/pokemon/images/e/e9/653Fennekin_XY_anime_5.png/revision/latest/scale-to-width-down/185?cb=20140830091512" style ="width:150px">
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+        {% lorem 10 w random %}
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+
+        <button class="btn btn-primary">Follow</button>
+        <button class="btn btn-alert">Like</button>
+        </div>
+
+        </div>
+
+    </li>
+
+
+    <li>
+        <div class="row border border-4">
+
+        <div class="col-4 col">
+<p>Quill Doe</p>
+        <img src="http://vignette2.wikia.nocookie.net/pokemon/images/b/bd/651Quilladin_XY_anime.png/revision/latest/scale-to-width-down/185?cb=20160216050057" style ="width:150px">
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+        {% lorem 10 w random %}
+        </div>
+        <div class="col-4 col" style="padding-top:100px">
+
+        <button class="btn btn-primary">Follow</button>
+        <button class="btn btn-alert">Like</button>
+        </div>
+
+        </div>
+
+    </li>
+
+
+</ul>
+
+
+{% endblock %}
+
+
+
