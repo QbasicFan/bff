@@ -20,14 +20,162 @@
 
 @-webkit-keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+
+  font-size: 10px !important;
+  z-index: 100;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+.btmMenu{
+    top : 70%;
+    right: 5%;
+    position: fixed;
+  z-index: 100;
+}
+
+div.mob {}
+div.big {    display: none;}
+
+@media screen and (max-width: 600px) {
+  div.mob {
+    display: none;
+  }
+  div.big {
+    display: block;
+  }
+
+
+
+}
+
+
+
+
 
 </style>
 
 
-<body style="padding-top:100px;padding-bottom:100px;background: url(https://cdn.wallpapersafari.com/53/59/Zbd4kR.jpeg);background-repeat: no-repeat;background-size: 100%;">
+<body  >
 
-<div class="container border border-3 border-primary text-center rotate-center" style="background-color:white">
-  <h1>Carnet de voyage<span class="fa fa-plane" aria-hidden="true"></span></h1>
+<div style="background: url({% static "img/bff/moreeBKG.jpg"%});background-repeat: no-repeat;background-size: 100%;">
+<div class="row">
+
+<div class="col-2 col">
+  <div class="center"><a href="/bff/"><img src="{% static "img/bff/MoreeDicoSmall.png" %}"></a></div>
+</div>
+<div class="col-8 col">
+<div style="background-color:white">
+    <h2>Moree Dico</h2>
+    <p>{% lorem 10 w random %}</p>
+
+
+</div>
+</div>
+<div class="col-2 col">
+</div>
+
+</div>
+</div>
+<div class="sticky">
+
+<div class="mob">
+  <label class="paper-btn margin" for="modal-2">About</label>
+  <label class="paper-btn margin" for="modal-2">Store</label>
+
+<span style="position: absolute;right: 0px !important;">
+
+    {% if user.is_authenticated %}
+    <label class="paper-btn margin"><a href="/bff/userView/">{{ user.username }}</a></label>
+    <label class="paper-btn margin" ><a href="/bff/loggedout/" >Log Out</a></label>
+    {% else %}
+      <label class="paper-btn margin" ><a href="/bff/logging/">Log In</a></label>
+      <label class="paper-btn margin" ><a href="/bff/createUser/">Register</a></label>
+	{% endif %}
+</span>
+</div>
+
+
+<!-- big screen -->
+
+<div class="big">
+
+  <label class="paper-btn margin" for="modal-1">Menu</label>
+
+
+</div>
+
+</div>
+
+
+
+<div class="btmMenu">
+<div class="mob">
+     <label class="paper-btn "><a href="/bff/"><img src="{% static "img/bff/MoreehomeSmall.png" %}" ></a></label><br>
+     <label class="paper-btn "><a href="/bff/users/"><img src="{% static "img/bff/MoreeuserSmall.png" %}" ></a></label><br>
+     <label class="paper-btn "><a href="/bff/like/"><img src="{% static "img/bff/MoreelikeSmall.png" %}" ></a></label>
+</div>
+
+</div>
+
+<div class="container border border-3 border-primary " style="background-color:white">
+
+<input class="modal-state" id="modal-2" type="checkbox">
+<div class="modal" style="z-index:10000">
+  <label class="modal-bg" for="modal-2"></label>
+  <div class="modal-body">
+    <label class="btn-close" for="modal-2">X</label>
+    <h4 class="modal-title">Modal Title</h4>
+    <h5 class="modal-subtitle">Modal Subtitle</h5>
+
+
+<p><span class="text-secondary">Moore, moshi, mossi</span> language is “spoken by approximately 5 million people in <span class="text-success">Burki</span><span class="text-warning">na</span> <span class="text-danger">Faso</span>, plus another 60,000+ in Mali and Togo. “.</p>
+
+<p>In perspective <span class="text-danger">Mandarin Chinese</span> 917.8 million, <span class="text-success">Spanish</span> 460.1 million, <span class="text-secondary">English</span> 379.0 million, <span class="text-muted">French</span> 77.2 million.</p>
+
+<p>This is nothing to be shy about, <span class="text-success">Burki</span><span class="text-warning">na</span> <span class="text-danger">Faso</span> has 20 million inhabitants and a quarter speak mossi.</p>
+
+
+    <a href="/#download">Get PaperCSS</a>
+    <label for="modal-2" class="modal-link">Close</label>
+  </div>
+</div>
+
+<!-- small menu -->
+<input class="modal-state" id="modal-1" type="checkbox">
+<div class="modal" style="z-index:10000">
+  <label class="modal-bg" for="modal-1"></label>
+  <div class="modal-body">
+    <label class="btn-close" for="modal-1">X</label>
+    <h4 class="modal-title">Menu </h4>
+    <h5 class="modal-subtitle">Menu</h5>
+
+<ul>
+    <li>Home</li>
+    <li>Users</li>
+    <li>Liked</li>
+    <hr>
+    <li>About</li>
+    <li>Store</li>
+    <li>Log in</li>
+
+</ul>
+
+
+    <a href="/#download">Get PaperCSS</a>
+    <label for="modal-2" class="modal-link">Close</label>
+  </div>
+</div>
 
 {% block content %}
 {% endblock %}
