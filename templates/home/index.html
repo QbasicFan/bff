@@ -1,14 +1,37 @@
 
-{% extends "bff/base.html" %}
+{% extends "home/base.html" %}
 {% load i18n staticfiles mezzanine_tags blog_tags %}
 
 {% block content %}
+
+
+
+
+<form action="" method="POST">
+	 {% csrf_token %}
+<div class="row border border-4">
+
+<div class="sm-4 md-4 lg-4 col  ">
+    <input type="submit" value="Search">
+</div>
+	 <div class="sm-8 md-8 lg-8 col  border-primary">
+	    <span>{{ form.title }}</span>
+	 </div>
+
+
+
+</div>
+
+
+</form>
+
+
 
 <div id="mydiv"></div>
 
 
 <script type="text/babel">
-    {% include "bff/reactJs/reactCards.js" %}
+    {% include "home/reactJs/reactCards.js" %}
 
 function Wrapp(){
     return (
@@ -48,103 +71,20 @@ function Wrapp(){
 
 
 
-<p><span class="text-secondary">Moore, moshi, mossi</span> language is “spoken by approximately 5 million people in <span class="text-success">Burki</span><span class="text-warning">na</span> <span class="text-danger">Faso</span>, plus another 60,000+ in Mali and Togo. “.</p>
-
-<p>In perspective <span class="text-danger">Mandarin Chinese</span> 917.8 million, <span class="text-success">Spanish</span> 460.1 million, <span class="text-secondary">English</span> 379.0 million, <span class="text-muted">French</span> 77.2 million.</p>
-
-<p>This is nothing to be shy about, <span class="text-success">Burki</span><span class="text-warning">na</span> <span class="text-danger">Faso</span> has 20 million inhabitants and a quarter speak mossi.</p>
-
-<input type="text" name="search" id="myInput" onkeyup="myFunction()" placeholder="Search here" title="Search here">
-
-
-
-<hr>
-
-<div class="row">
-
-<div class="sm-6 md-6 lg-6 col" >
-<img id="im" src="{% static "img/bf/bf.png" %}" alt="Car" style="width:100%">
-</div>
-
-<div class="sm-6 md-3 lg-3 col border border-secondary">
-<p>Hover me</p>
-<ul>
-<li onmouseover="change('mossi.png')" class="background-primary">Mossi</li>
-<li onmouseover="change('burkina.png')" class="background-secondary">Burkina Faso regions map</li>
-<li onmouseover="change('mossivillagekokologo2.jpg')" class="background-success">Mossi buildings</li>
-<li onmouseover="change('mossi_kingdom.jpg')" class="background-danger">Mossi warrior</li>
-<li>...</li>
-</ul>
-</div>
-
-<div class="sm-6 md-3 lg-3 col border border-6 border-primary">
-<span id="info1" class="text-success" ></span><br>
-<span id="info2" class="text-success"></span><br>
-<span id="info3" class="text-success"></span>
-
-</div>
-
-</div>
-<hr>
-<h1>BookMark</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>cate</th>
-      <th>Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-{% for p in book %}
-
-    <tr>
-      <td><a href="{{ p.link }}" target="_blank">{{ p }}</a></td>
-      <td>{{ p.cate }}</td>
-      <td>{{ p.rate }}/5</td>
-    </tr>
-{% endfor %}
-
-  </tbody>
-</table>
 
 <hr>
 
 
-<section style="margin-top:20px">
-<div class="container">
-
-<h5>Add aNew BookMark</h5>
-<form action="" method="POST">
-	 {% csrf_token %}
-<div class="row">
-	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
-	     Name :<span>{{ form.title }}</span>
-	 </div>
-	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
-    	 Link :<span>{{ form.link }}</span>
-    </div>
-</div>
-<div class="row">
-	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
-	     Type :<span>{{ form.cate }}</span>
-	 </div>
-	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
-    	 Rate :<span>{{ form.rate }}</span>
-    </div>
-</div>
-<div class="text-center">
-    <input type="submit" >
-</div>
-</form>
-
-</section>
 
 
-</div>
+
+
 
 <script>
+
+function init (){
+
+}
 
 function myFunction() {
     var input, filter, ul, li, b, i;
