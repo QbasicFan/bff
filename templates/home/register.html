@@ -1,0 +1,28 @@
+
+{% extends "home/base.html" %}
+{% load i18n staticfiles mezzanine_tags blog_tags %}
+
+{% block content %}
+
+
+
+<form action="/bff/" method="POST">
+	 {% csrf_token %}
+
+{{ form.as_p }}
+
+  <div class="col p-0 mt-3">
+    <input type="submit" value="Create Account" class="">
+  </div>
+
+<br>
+
+<a href="/bff/" class="mt-3 text-center font-size12px">Already have an account? </a>
+
+</form>
+
+
+
+{% endblock %}
+
+
